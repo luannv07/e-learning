@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: e-learning
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/elearning_db
+      ?useSSL=false
+      &allowPublicKeyRetrieval=true
+      &serverTimezone=UTC
+    username: elearning
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+server:
+  port: 8080
