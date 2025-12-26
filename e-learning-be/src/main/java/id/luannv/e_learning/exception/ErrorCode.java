@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -17,6 +18,8 @@ public enum ErrorCode {
     FIELD_TOO_LONG(400, "Giá trị nhập quá dài."),
     ENUM_INVALID(400, "Giá trị không nằm trong danh sách cho phép."),
     NOTHING_UP_TO_DATE(422, "Không có dữ liệu nào để cập nhật."),
+    METHOD_NOT_ALLOWED(405, "Địa chỉ không hỗ trợ"),
+    FORM_BODY_MISSING(400, "Vui lòng gửi đúng định dạng body."),
 
     // ===== AUTH / USER =====
     USER_NOT_FOUND(404, "Không tìm thấy người dùng."),
@@ -53,7 +56,7 @@ public enum ErrorCode {
 
     // ===== REVIEW / PROGRESS =====
     REVIEW_NOT_FOUND(404, "Không tìm thấy đánh giá."),
-    PROGRESS_INVALID(400, "Tiến độ học tập không hợp lệ.");
+    PROGRESS_INVALID(400, "Tiến độ học tập không hợp lệ."), LOGIN_FAILED(400, "Sai tài khoản hoặc mật khẩu.");
 
     Integer status;
     String message;

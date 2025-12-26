@@ -1,8 +1,5 @@
 package id.luannv.e_learning.dto.request;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -14,22 +11,25 @@ import lombok.experimental.FieldDefaults;
 public class UserCreationRequest {
     @Pattern(message = "USERNAME_INVALID", regexp = "^[a-z][a-z0-9]{3,}$")
 	@NotBlank(message = "FIELD_BLANK")
-    @Max(value = 50, message = "FIELD_TOO_LONG")
+    @Size(max = 50, message = "FIELD_TOO_LONG")
 	String username;
 	@Pattern(message = "PASSWORD_INVALID", regexp = "^.{3,}$")
 	@NotBlank(message = "FIELD_BLANK")
-    @Max(value = 50, message = "FIELD_TOO_LONG")
+    @Size(max = 50, message = "FIELD_TOO_LONG")
 	String password;
 	@Email(regexp = "^[a-zA-Z0-9._%+-]+@gmail\\.com$", message = "EMAIL_INVALID")
-    @Max(value = 50, message = "FIELD_TOO_LONG")
+    @Size(max = 255, message = "FIELD_TOO_LONG")
 	@NotBlank(message = "FIELD_BLANK")
 	String email;
-    @Max(value = 255, message = "FIELD_TOO_LONG")
+    @Size(max = 255, message = "FIELD_TOO_LONG")
 	String address;
     @NotBlank(message = "FIELD_BLANK")
-    @Max(value = 50, message = "FIELD_TOO_LONG")
+    @Size(max = 50, message = "FIELD_TOO_LONG")
     String firstName;
     @NotBlank(message = "FIELD_BLANK")
-    @Max(value = 50, message = "FIELD_TOO_LONG")
+    @Size(max = 50, message = "FIELD_TOO_LONG")
     String lastName;
+    @NotNull(message = "FIELD_BLANK")
+    @Max(value = 20, message = "FIELD_TOO_LONG")
+    Integer roleId;
 }
